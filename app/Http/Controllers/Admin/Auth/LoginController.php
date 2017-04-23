@@ -1,6 +1,6 @@
 <?php
 
-namespace CodeFlix\Http\Controllers\Auth;
+namespace CodeFlix\Http\Controllers\Admin\Auth;
 use CodeFlix\Http\Controllers\Controller;
 use CodeFlix\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,7 +26,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+
+    protected $redirectTo = '/admin/dashboard';
 
     /**
      * Create a new controller instance.
@@ -44,4 +45,12 @@ class LoginController extends Controller
         $data['role'] = User::ROLE_ADMIN;
         return $data;
     }
+
+    public function showLoginForm()
+    {
+
+         return view('admin.Auth.login');
+    }
+
+
 }
