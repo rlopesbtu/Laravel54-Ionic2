@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index');
 Route::group([
     'prefix'=>'admin',
     'as' => 'admin.',
-    'namespace' => 'admin\\'
+    'namespace' => 'Admin\\'
 ], function(){
     Route::name('login')->get('login','Auth\LoginController@showLoginForm');
     Route::post('login','Auth\LoginController@login');
@@ -39,6 +39,7 @@ Route::group([
         Route::get('dashboard',function(){
             return view('admin.dashboard');
         });
+        Route::resource('users','UsersController' );
      });
 
 });
