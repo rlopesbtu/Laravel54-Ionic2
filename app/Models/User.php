@@ -34,6 +34,9 @@ class User extends Authenticatable implements TableInterface
         'password', 'remember_token',
     ];
 
+    public static function generatePassword($password = null) {
+        return !$password? bcrypt(str_random(8)):bcrypt($password);
+    }
     /**
      * Send the password reset notification.
      *
