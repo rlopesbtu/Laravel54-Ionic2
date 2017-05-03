@@ -230,6 +230,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Table' => Bootstrapper\Facades\Table::class,
         'Icon' => \Bootstrapper\Facades\Icon::class,
-        'FormBuilder' => kris\LaravelFormBuilder\Facades\FormBuilder::class
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class
     ],
 ];
