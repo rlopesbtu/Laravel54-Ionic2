@@ -229,8 +229,11 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Table' => Bootstrapper\Facades\Table::class,
-        'Icon' => \Bootstrapper\Facades\Icon::class,
-        'Alert' => \Bootstrapper\Facades\Alert::class,
+        'Icon' => Bootstrapper\Facades\Icon::class,
+        'Alert' => Bootstrapper\Facades\Alert::class,
+        'Button' => Bootstrapper\Facades\Button::class,
+        'Navbar' => Bootstrapper\Facades\Navbar::class,
+        'Navigation' => Bootstrapper\Facades\Navigation::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class
     ],
 ];
