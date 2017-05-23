@@ -47,7 +47,7 @@
     ?>
     {!! $navbar !!}
         <?php $formLogout = FormBuilder::plain([
-            'id' => 'form-delete',
+            'id' => 'form-logout',
             'route' => ['admin.logout'],
             'method' => 'POST',
             'style' => 'display:none'
