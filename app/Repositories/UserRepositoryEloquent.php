@@ -2,6 +2,7 @@
 
 namespace CodeFlix\Repositories;
 
+use Jrean\UserVerification\Facades\UserVerification;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use CodeFlix\Models\User;

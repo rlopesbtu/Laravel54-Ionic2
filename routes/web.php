@@ -43,7 +43,14 @@ Route::group([
         Route::get('dashboard',function(){
             return view('admin.dashboard');
         });
+
+        Route::name('user_settings.edit')->get('users/settings','Auth\UserSettingsController@edit');
+        Route::name('user_settings.update')->put('users/settings','Auth\UserSettingsController@update');
         Route::resource('users','UsersController' );
+
+        Route::name('category_settings.edit')->get('category/settings','Auth\CategorySettingsController@edit');
+        Route::name('category_settings.update')->put('category/settings','Auth\CategorySettingsController@update');
+        Route::resource('categories','CategoriesController' );
      });
 
 });

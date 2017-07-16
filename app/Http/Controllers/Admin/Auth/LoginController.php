@@ -46,6 +46,8 @@ class LoginController extends Controller
         return $data;
     }
 
+
+
     public function showLoginForm()
     {
 
