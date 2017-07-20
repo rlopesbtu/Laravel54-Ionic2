@@ -28,6 +28,7 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::get('email-verification/error', 'EmailVerificationController@getVerificationError')->name('email-verification.error');
 Route::get('email-verification/check/{token}', 'EmailVerificationController@getVerification')->name('email-verification.check');
 
+
 Route::get('/home', 'HomeController@index');
 
 Route::group([

@@ -30,7 +30,8 @@ class User extends Authenticatable implements TableInterface
      *
      * @var array
      */
-    protected $hidden = [
+
+     protected $hidden = [
         'password', 'remember_token',
     ];
 
