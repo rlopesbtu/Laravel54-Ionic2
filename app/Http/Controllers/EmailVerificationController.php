@@ -17,7 +17,9 @@ class EmailVerificationController extends Controller
     public function redirectAfterVerification()
     {
         $this->loginUser();
+
         return route ('user_settings.edit');
+        dd('teste');
     }
 
     protected function loginUser(){

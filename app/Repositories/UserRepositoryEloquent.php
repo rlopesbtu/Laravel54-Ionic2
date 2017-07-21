@@ -37,7 +37,7 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
 
     public function update (array $attributes, $id)
     {
-        if(isset($atributes['password'])) {
+        if(isset($attributes['password'])) {
             $attributes['password'] = User::generatePassword($attributes['password']);
         }
         $model = parent::update($attributes,$id);
