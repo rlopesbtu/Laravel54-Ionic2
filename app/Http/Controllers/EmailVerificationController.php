@@ -18,8 +18,8 @@ class EmailVerificationController extends Controller
     {
         $this->loginUser();
 
-        return route ('user_settings.edit');
-        dd('teste');
+        return route ('admin.user_settings.edit');
+
     }
 
     protected function loginUser(){
