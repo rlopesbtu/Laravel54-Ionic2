@@ -36,6 +36,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
+
         $form = \FormBuilder::create(CategoryForm::class,[
             'url' => route('admin.categories.store'),
             'method' => 'POST'

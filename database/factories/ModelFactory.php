@@ -31,8 +31,12 @@ $factory->state(\CodeFlix\Models\User::class,'admin', function (Faker\Generator 
     ];
 });
 
-$factory->define(\CodeFlix\Models\Category::class, function(Faker\Generator $faker) {
+
+$factory->define(\CodeFlix\Models\Serie::class, function(Faker\Generator $faker) {
     return [
-      'name' => $faker->word
+        'title' => $faker->sentence(3),
+        'description' => $faker->sentence(10),
+        'thumb' => 'thumb.jpg'
+
     ];
 });

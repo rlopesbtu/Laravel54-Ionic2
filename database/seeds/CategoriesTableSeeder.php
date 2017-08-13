@@ -1,5 +1,5 @@
 <?php
-class CategoriesTableSeeder extends seeder
+class CategoriesTableSeeder extends Seeder
 {
     public function run()
     {
