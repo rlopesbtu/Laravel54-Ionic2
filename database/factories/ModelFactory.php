@@ -31,6 +31,11 @@ $factory->state(\CodeFlix\Models\User::class,'admin', function (Faker\Generator 
     ];
 });
 
+$factory->define(\CodeFlix\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word
+    ];
+});
 
 $factory->define(\CodeFlix\Models\Serie::class, function(Faker\Generator $faker) {
     return [
@@ -50,6 +55,5 @@ $factory->define(\CodeFlix\Models\Video::class, function(Faker\Generator $faker)
         'thumb' => 'thumb.jpg',
         'published' => rand(0,1),
         'completed' => 1
-
     ];
 });
