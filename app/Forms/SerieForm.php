@@ -4,7 +4,7 @@ namespace CodeFlix\Forms;
 
 use Kris\LaravelFormBuilder\Form;
 
-class SeriesForm extends Form
+class SerieForm extends Form
 {
     public function buildForm()
     {

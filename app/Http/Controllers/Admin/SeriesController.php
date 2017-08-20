@@ -1,11 +1,12 @@
 <?php
 namespace CodeFlix\Http\Controllers\Admin;
 
-use CodeFlix\Forms\SeriesForm;
+use CodeFlix\Forms\SerieForm;
 use CodeFlix\Models\Serie;
 use Illuminate\Http\Request;
 use CodeFlix\Http\Controllers\Controller;
 use CodeFlix\Repositories\SerieRepository;
+use Illuminate\Database\Eloquent\Model;
 
 
 class SeriesController extends Controller
@@ -32,7 +33,7 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        $form = \FormBuilder::create(SeriesForm::class,[
+        $form = \FormBuilder::create(SerieForm::class,[
             'url' => route('admin.series.store'),
             'method' => 'POST'
         ]);
@@ -47,7 +48,7 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        $form = \FormBuilder::create(SeriesForm::class);
+        $form = \FormBuilder::create(SerieForm::class);
 
         if (!$form->isValid()) {
             return redirect()
@@ -56,6 +57,8 @@ class SeriesController extends Controller
                 ->withInput();
         }
         $data = $form->getFieldValues();
+        $data['thumb'] = 'thumb.jpg';
+        Model::unguard();
         $this->repository->create($data);
         $request->session()->flash('message','Série criada com sucesso.');
         return redirect()->route('admin.series.index');
@@ -67,7 +70,7 @@ class SeriesController extends Controller
      * @param  \CodeFlix\Models\Serie  $serie
      * @return \Illuminate\Http\Response
      */
-    public function show(Serie $serie)
+    public function show(Serie $series)
     {
         return view('admin.series.show', ['serie'=>$series]);
     }
@@ -75,12 +78,12 @@ class SeriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \CodeFlix\Models\Serie  $serie
+     * @param  \CodeFlix\Models\Serie  $series
      * @return \Illuminate\Http\Response
      */
     public function edit(Serie $series)
     {
-        $form = FormBuilder::create(SerieForm::class, [
+        $form = \FormBuilder::create(SerieForm::class, [
             'url' => route('admin.series.update', ['serie' => $series->id]),
             'method' => 'PUT',
             'model' => $series,
@@ -98,7 +101,7 @@ class SeriesController extends Controller
      */
     public function update($id)
     {
-        $form = FormBuilder::create(SerieForm::class,[
+        $form = \FormBuilder::create(SerieForm::class,[
             'data' => ['id'=>$id]
         ]);
         if (!$form->isValid()) {
@@ -116,7 +119,7 @@ class SeriesController extends Controller
      * @param  \CodeFlix\Models\Serie  $serie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Serie $serie)
+    public function destroy($id)
     {
         $this->repository->delete($id);
         session()->flash('message', 'Série excluída com sucesso.');

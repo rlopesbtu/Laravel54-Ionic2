@@ -6,7 +6,7 @@
             <h3>Ver Séries</h3>
                 <?php $iconEdit = Icon::create('pencil')?>
                   {!! Button::primary($iconEdit)->asLinkTo(route('admin.series.edit',['serie' => $serie->id])) !!}
-
+            <?php $iconDestroy = Icon::create('remove');?>
                   {!! Button::danger($iconDestroy)
                           ->asLinkTo(route('admin.series.destroy',['serie' => $serie->id]))
                           ->addAttributes(['onclick' => "event.preventDefault();document.getElementById(\"form-delete\").submit();"])
