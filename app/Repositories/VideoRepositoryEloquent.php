@@ -4,9 +4,8 @@ namespace CodeFlix\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use CodeFlix\Repositories\VideoRepository;
 use CodeFlix\Models\Video;
-use CodeFlix\Validators\VideoValidator;
+
 
 /**
  * Class VideoRepositoryEloquent
