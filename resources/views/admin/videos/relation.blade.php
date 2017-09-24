@@ -3,14 +3,14 @@
 @section('content')
     <div class="container">
         <div class="row">
-            @component('admin.videos.tabs-component',['video' => $form->getModel()])
+            @component('admin.videos.tabs-component',['video'=>$form->getModel()])
                 <div class="col-md-12">
-                    <h4>Editar vídeo</h4>
+                    <h4>Série e categorias</h4>
                     <?php $icon = Icon::create('pencil')?>
                     {!! form($form->add('salve','submit',[
-                         'attr' => ['class' => 'btn btn-primary btn-block'],
-                         'label' => $icon
-                         ]))
+                       'attr' => ['class' => 'btn btn-primary btn-block'],
+                       'label' => $icon
+                       ]))
                     !!}
                 </div>
             @endcomponent
