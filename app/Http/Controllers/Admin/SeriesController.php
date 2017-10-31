@@ -57,7 +57,7 @@ class SeriesController extends Controller
                 ->withInput();
         }
         $data = $form->getFieldValues();
-        $data['thumb'] = 'thumb.jpg';
+        $data['thumb'] = env('SERIE_NO_THUMB');
         Model::unguard();
         $this->repository->create($data);
         $request->session()->flash('message','Série criada com sucesso.');
@@ -99,7 +99,7 @@ class SeriesController extends Controller
      * @param  \CodeFlix\Models\Serie  $serie
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         $form = \FormBuilder::create(SerieForm::class,[
             'data' => ['id'=>$id]
@@ -124,5 +124,13 @@ class SeriesController extends Controller
         $this->repository->delete($id);
         session()->flash('message', 'Série excluída com sucesso.');
         return redirect()->route('admin.series.index');
+    }
+
+    public function thumbAsset(Serie $serie){
+        return response()->download($serie->thumb_path);
+    }
+
+    public function thumbSmallAsset(Serie $serie){
+        return response()->download($serie->thumb_small_path);
     }
 }

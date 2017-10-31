@@ -18,14 +18,16 @@ class VideoRelationForm extends Form
             'attr'=>[
                 'name' => 'categories[]'
              ],
-            'label' => 'Categorias'
+            'label' => 'Categorias',
+            'rules' => 'required|exists:categories,id'
             ])
 
             ->add('serie_id','entity',[
                 'class' => Serie::class,
                 'property' => 'title',
                 'empty_value' => 'Selecione a série',
-                'label' => 'Série'
+                'label' => 'Série',
+                'rules' => 'nullable|exists:series,id'
             ]);
     }
 }

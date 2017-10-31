@@ -1,12 +1,5 @@
 <?php
-
-use CodeFlix\Models\Category;
-use CodeFlix\Models\Video;
-use CodeFlix\Models\Serie;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Collection;
-
-
 class VideosTableSeeder extends Seeder
 {
     /**
@@ -16,23 +9,38 @@ class VideosTableSeeder extends Seeder
      */
     public function run()
     {
-        /** @var Collection $series */
-        $series = Serie::all();
-        $categories = Category::all();
-        factory(Video::class, 100)
+        $series = \CodeFlix\Models\Serie::all();
+        $categories = \CodeFlix\Models\Category::all();
+        $repository = app(\CodeFlix\Repositories\VideoRepository::class);
+        $collectionThumbs = $this->getThumbs();
+        factory(\CodeFlix\Models\Video::class,100)
             ->create()
-            ->each(function ($video) use($series,$categories){
+            ->each(function($video) use(
+                $series,
+                $categories,
+                $repository,
+                $collectionThumbs
+            ){
+                $repository->uploadThumb($video->id,$collectionThumbs->random());
                 $video->categories()->attach($categories->random(4)->pluck('id'));
-                $num = rand(1,3);
-                if($num%2==0){
+                $num = rand(1, 3);
+                if($num % 2 == 0){
                     $serie = $series->random();
                     $video->serie_id = $serie->id;
                     $video->serie()->associate($serie);
                     $video->save();
-
                 }
+            });
+    }
 
-        });
+    protected function getThumbs(){
+        return new \Illuminate\Support\Collection([
+            new \Illuminate\Http\UploadedFile(
+                storage_path('app/files/faker/thumbs/thumb_symfony.jpg'),
+                'thumb_symfony.jpg'
+            ),
+        ]);
     }
 }
+
 ?>

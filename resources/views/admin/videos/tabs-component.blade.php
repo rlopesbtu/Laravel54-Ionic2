@@ -13,8 +13,10 @@
 
             ],
             [
-                'title' => 'Video e thumbnail',
-                'link' => ''
+                'title' => 'Vídeo e Thumbnail',
+                'link' => !isset($video)?'#':route('admin.videos.uploads.create',['video'=>$video->id]),
+                'disabled' => !isset($video)?true:false
+
             ]
 
         ];

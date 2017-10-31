@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.4.21 on 2017-05-21.
+ * Generated for Laravel 5.4.21 on 2017-10-22.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -12467,6 +12467,71 @@ namespace Bootstrapper\Facades {
         }
         
     }         
+
+    class MediaObject {
+        
+        /**
+         * Renders the media object
+         *
+         * @return string 
+         * @throws MediaObjectException if there is no contents
+         * @static 
+         */
+        public static function render()
+        {
+            return \Bootstrapper\MediaObject::render();
+        }
+        
+        /**
+         * Sets the contents of the media object
+         *
+         * @param array $contents The contents of the media object
+         * @return $this 
+         * @static 
+         */
+        public static function withContents($contents)
+        {
+            return \Bootstrapper\MediaObject::withContents($contents);
+        }
+        
+        /**
+         * Force the media object to become a list
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function asList()
+        {
+            return \Bootstrapper\MediaObject::asList();
+        }
+        
+        /**
+         * Set the attributes of the object
+         *
+         * @param array $attributes The attributes to use
+         * @return $this 
+         * @static 
+         */
+        public static function withAttributes($attributes)
+        {
+            //Method inherited from \Bootstrapper\RenderedObject            
+            return \Bootstrapper\MediaObject::withAttributes($attributes);
+        }
+        
+        /**
+         * Adds the given classes to attributes
+         *
+         * @param array $classes
+         * @return $this 
+         * @static 
+         */
+        public static function addClass($classes)
+        {
+            //Method inherited from \Bootstrapper\RenderedObject            
+            return \Bootstrapper\MediaObject::addClass($classes);
+        }
+        
+    }         
 }
     
 namespace Kris\LaravelFormBuilder\Facades {
@@ -15629,6 +15694,8 @@ namespace {
     class Navbar extends \Bootstrapper\Facades\Navbar {}
     
     class Navigation extends \Bootstrapper\Facades\Navigation {}
+    
+    class MediaObject extends \Bootstrapper\Facades\MediaObject {}
     
     class FormBuilder extends \Kris\LaravelFormBuilder\Facades\FormBuilder {}
     
