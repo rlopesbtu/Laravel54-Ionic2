@@ -1,6 +1,5 @@
 <?php
 use CodeFlix\Repositories\SerieRepository;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Seeder;
 
 
@@ -13,8 +12,8 @@ class SeriesTableSeeder extends Seeder
         $series = factory(\CodeFlix\Models\Serie::class,5)->create();
         $repository = app(SerieRepository::class);
         $collectionThumbs = $this->getThumbs();
-        $series->each(function($serie) use($repository, $collectionThumbs){
-            $repository->uploadThumb($serie->id,$collectionThumbs->random());
+        $series->each(function($serie)use($repository, $collectionThumbs){
+            $repository->uploadThumb($serie,$collectionThumbs->random());
         });
 
     }

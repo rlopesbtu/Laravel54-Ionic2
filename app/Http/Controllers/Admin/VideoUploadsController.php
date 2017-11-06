@@ -39,7 +39,7 @@ class VideoUploadsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, Video $video)
     {
         $form = \FormBuilder::create(VideoUploadForm::class);
 
@@ -49,9 +49,15 @@ class VideoUploadsController extends Controller
                 ->withErrors($form->getErrors())
                 ->withInput();
         }
-        $this->repository->uploadThumb($id,$request->file('thumb'));
+
+        if ($request->file('thumb')){
+            $this->repository->uploadThumb($video,$request->file('thumb'));
+        }
+        if ($request->file('file')) {
+            $this->repository->uploadFile($video, $request->file('file'));
+        }
         $request->session()->flash('message','Upload(s) realizado(s) com sucesso.');
-        return redirect()->route('admin.videos.uploads.create',['video' => $id]);
+        return redirect()->route('admin.videos.uploads.create',['video' => $video]);
     }
 
     /**

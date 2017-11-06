@@ -16,7 +16,7 @@ trait FileUploads
     }
     protected function deleteFileOld($model)
     {
-        $storage = $model->getStorageDisk();
+        $storage = $model->getStorage();
         if ($storage->exists($model->file_relative)) {
             $storage->delete($model->file_relative);
         }

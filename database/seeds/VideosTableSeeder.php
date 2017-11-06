@@ -1,5 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
+
+
 class VideosTableSeeder extends Seeder
 {
     /**
@@ -13,15 +15,18 @@ class VideosTableSeeder extends Seeder
         $categories = \CodeFlix\Models\Category::all();
         $repository = app(\CodeFlix\Repositories\VideoRepository::class);
         $collectionThumbs = $this->getThumbs();
-        factory(\CodeFlix\Models\Video::class,100)
+        $collectionVideos = $this->getVideos();
+        factory(\CodeFlix\Models\Video::class,2)
             ->create()
             ->each(function($video) use(
                 $series,
                 $categories,
                 $repository,
-                $collectionThumbs
+                $collectionThumbs,
+                $collectionVideos
             ){
-                $repository->uploadThumb($video->id,$collectionThumbs->random());
+                $repository->uploadThumb($video,$collectionThumbs->random());
+                $repository->uploadFile($video,$collectionVideos->random());
                 $video->categories()->attach($categories->random(4)->pluck('id'));
                 $num = rand(1, 3);
                 if($num % 2 == 0){
@@ -38,6 +43,15 @@ class VideosTableSeeder extends Seeder
             new \Illuminate\Http\UploadedFile(
                 storage_path('app/files/faker/thumbs/thumb_symfony.jpg'),
                 'thumb_symfony.jpg'
+            ),
+        ]);
+    }
+
+    protected function getVideos(){
+        return new \Illuminate\Support\Collection([
+            new \Illuminate\Http\UploadedFile(
+                storage_path('app/files/faker/videos/teste.mp4'),
+                'teste.mp4.jpg'
             ),
         ]);
     }
