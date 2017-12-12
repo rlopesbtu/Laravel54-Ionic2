@@ -24,7 +24,9 @@
                     <tbody>
                      <tr>
                          <th scope="row">#</th>
-                        <td>{{$serie->id}}</td>
+                        <td>
+                            <img src="{{$serie->thumb_asset}}" width="512" height="360">
+                        </td>
                      </tr>
                     <tr>
                         <th scope="row">Título</th>

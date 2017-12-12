@@ -172,6 +172,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Jrean\UserVerification\UserVerificationServiceProvider::class,
         \Folklore\Image\ImageServiceProvider::class,
+        \Dingo\Api\Provider\LaravelServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -240,7 +241,8 @@ return [
         'MediaObject' => \Bootstrapper\Facades\MediaObject::class,
         'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
         'UserVerification' => Jrean\UserVerification\Facades\UserVerification::class,
-        'image' => \Folklore\Image\Facades\Image::class
+        'image' => \Folklore\Image\Facades\Image::class,
+        'ApiRoute' => \Dingo\Api\Facade\Route::class,
 
     ],
 ];

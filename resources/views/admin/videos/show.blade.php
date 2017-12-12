@@ -23,11 +23,15 @@
                     <tbody>
                      <tr>
                          <th scope="row">#</th>
-                        <td>{{$video->id}}</td>
+                        <td>
+                            <img src="{{$video->thumb_asset}}" width="512" height = "360">
+                        </td>
                      </tr>
                     <tr>
                         <th scope="row">Nome</th>
-                        <td>{{$video->title}}</td>
+                        <td>
+                            <a href="{{$video->file_asset}}" target="_blank">Download</a>
+                        </td>
                     </tr>
                      <tr>
                          <th scope="row">E-mail</th>

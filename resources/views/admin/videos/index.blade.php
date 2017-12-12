@@ -11,10 +11,10 @@
            ->callback('Descrição', function($field,$video){
                 return MediaObject::withContents(
                     [
-                        'image' => $video->thumb_small_path,
-                        'link' => $video->file_path,
-                        'heading' => $video->title,
-                        'body' => $video->description,
+                       'image' => $video->thumb_small_asset,
+                       'link'  => $video->file_asset,
+                       'heading'  => $video->title,
+                       'body'  => $video->description
                     ]
             );
            })
@@ -30,10 +30,11 @@
         </div>
     </div>
 @endsection
+
 @push('styles')
 <style type="text/css">
     .media-body{
-        width: auto;
+        width: 400px;
     }
 </style>
 @endpush

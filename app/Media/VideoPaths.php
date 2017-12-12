@@ -1,8 +1,24 @@
 <?php
 namespace CodeFlix\Media;
+use function Aws\recursive_dir_iterator;
+
 trait VideoPaths
 {
     use ThumbPaths;
+
+    public function getFileRelativeAttribute()
+    {
+        return $this->file ? "{$this->thumb_folder_storage}/{$this->file}" : false;
+    }
+
+    public function getFilePathAttribute()
+    {
+        if($this->thumb_relative){
+            return $this->getAbsolutePath($this->getStorage(),$this->file_relative);
+        }
+        return false;
+    }
+
 
     public function getThumbFolderStorageAttribute(){
         return "videos/{$this->id}";
@@ -19,17 +35,19 @@ trait VideoPaths
         $this->file_path;
     }
 
-
-    public function getFileRelativeAttribute()
+    public function getThumbAssetAttribute()
     {
-        return $this->file ? "{$this->thumb_folder_storage}/{$this->file}" : false;
+        return $this->isLocalDriver()?
+            route('admin.videos.thumb_asset',['video' => $this->id]):
+            $this->thumb_path;
     }
-    public function getFilePathAttribute()
+
+
+    public function getThumbSmallAssetAttribute()
     {
-        if($this->thumb_relative){
-            return $this->getAbsolutePath($this->getStorage(),$this->file_relative);
-        }
-        return false;
+        return $this->isLocalDriver() ?
+            route('admin.videos.thumb_small_asset',['video'=>$this->id])
+            : $this->thumb_small_path;
     }
 
 }

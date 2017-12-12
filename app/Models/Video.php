@@ -5,6 +5,7 @@ namespace CodeFlix\Models;
 use Bootstrapper\Interfaces\TableInterface;
 use CodeFlix\Media\VideoPaths;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
@@ -12,6 +13,7 @@ class Video extends Model implements Transformable, TableInterface
 {
     use TransformableTrait;
     use VideoPaths;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -25,7 +27,8 @@ class Video extends Model implements Transformable, TableInterface
       'completed' => 'boolean'
     ];
 
-    public function serie(){
+    public function serie()
+    {
         return $this->belongsTo(Serie::class);
     }
 
