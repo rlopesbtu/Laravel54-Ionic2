@@ -2,6 +2,7 @@
 
 namespace CodeFlix\Providers;
 
+use Dingo\Api\Event\ResponseWasMorphed;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,10 +14,14 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'CodeFlix\Events\SomeEvent' => [
-            'CodeFlix\Listeners\EventListener',
+        Dingo\Api\Event\ResponseWasMorphed::class => [
+            'CodeFlix\Listeners\AddTokenToHeaderListener',
         ],
     ];
+
+    //evento é algo que ocorreu - resposta Http foi gerada
+    //listener - ouvinte - tem uma ação sobre o evento que ocorreu
+
 
     /**
      * Register any events for your application.

@@ -3,10 +3,10 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h3>Listagem de Categorias</h3>
+            <h3>Listagem de Categoria</h3>
             {!! Button::primary('Nova categoria')->asLinkTo(route('admin.categories.create')) !!}
         </div>
-        <div class=""row">
+        <div class="row">
            {!! Table::withContents($categories->items())->striped()
             ->callback('Ações',function($field,$category){
                 $linkEdit = route('admin.categories.edit',['category' => $category->id]);
