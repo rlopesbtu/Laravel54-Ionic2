@@ -5,6 +5,7 @@ namespace CodeFlix\Listeners;
 use Dingo\Api\Event\ResponseWasMorphed;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Tymon\JWTAuth\Contracts\Providers\JWT;
 
 class AddTokenToHeaderListner
 {
@@ -28,7 +29,7 @@ class AddTokenToHeaderListner
     {
         $token = $this->jwt->getToken();
         if($token) {
-            $event->response->headers->set('Authorization', "Bearer{$token->get()}");
+            $event->response->headers->set('Authorization', "Bearer {$token->get()}");
         }
     }
 }

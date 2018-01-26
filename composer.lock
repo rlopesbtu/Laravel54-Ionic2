@@ -1539,6 +1539,64 @@
             "time": "2017-01-26T19:27:05+00:00"
         },
         {
+            "name": "lcobucci/jwt",
+            "version": "3.3.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/jwt.git",
+                "reference": "2c2c77fb863a20cc90b7b686c88275e85581bd03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/jwt/zipball/2c2c77fb863a20cc90b7b686c88275e85581bd03",
+                "reference": "2c2c77fb863a20cc90b7b686c88275e85581bd03",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "mdanter/ecc": "~0.3.1",
+                "mikey179/vfsstream": "~1.5",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/php-invoker": "~1.1",
+                "phpunit/phpunit": "~4.5",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "suggest": {
+                "mdanter/ecc": "Required to use Elliptic Curves based algorithms."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\JWT\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Otávio Cobucci Oblonczyk",
+                    "email": "lcobucci@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A simple library to work with JSON Web Token and JSON Web Signature",
+            "keywords": [
+                "JWS",
+                "jwt"
+            ],
+            "time": "2016-10-31T20:12:20+00:00"
+        },
+        {
             "name": "league/flysystem",
             "version": "1.0.40",
             "source": {
@@ -3266,7 +3324,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-10-11 12:05:26"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/polyfill-util",
@@ -3318,7 +3376,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2017-10-11 12:05:26"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/process",
@@ -3693,6 +3751,7 @@
                 "illuminate/contracts": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
                 "illuminate/http": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
                 "illuminate/support": "5.1.* || 5.2.* || 5.3.* || 5.4.* || 5.5.*",
+                "lcobucci/jwt": "^3.2",
                 "namshi/jose": "^7.0",
                 "nesbot/carbon": "^1.0",
                 "php": "^5.5.9 || ^7.0"
@@ -3746,7 +3805,7 @@
                 "jwt",
                 "laravel"
             ],
-            "time": "2017-04-22 18:21:34"
+            "time": "2017-04-22T18:21:34+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
